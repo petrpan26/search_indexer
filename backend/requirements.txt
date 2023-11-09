@@ -1,0 +1,7 @@
+fastapi \
+uvicorn \
+pymupdf \
+openai \
+pinecone-client \
+python-docx \
+nltk
