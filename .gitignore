@@ -129,3 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .vercel
+
+.env
+node_modules
+
+.vercel
+.eslintrc.json
