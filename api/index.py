@@ -19,3 +19,7 @@ async def upload_document(file: UploadFile):
     with tempfile.NamedTemporaryFile(suffix=file.filename) as tmp:
         tmp.write(file.file.read())
         return {'document_id': add_document(tmp.name)}
+    
+@app.get('/api/test')
+async def test():
+    return {'response': 'This test fail succesfully'}
