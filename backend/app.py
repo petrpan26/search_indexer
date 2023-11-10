@@ -2,7 +2,6 @@ from fastapi import FastAPI, UploadFile
 from pydantic import BaseModel
 from .rag.answering_engine import add_document, get_answer
 import tempfile
-import nltk
 
 class QuestionModel(BaseModel):
     document_id: str
