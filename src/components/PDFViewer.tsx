@@ -1,18 +1,23 @@
-import {React, useState} from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
+import React, { useState} from 'react';
+import { Document, Page, pdfjs} from 'react-pdf';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PDFViewer = ({ file }) => {
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+interface Props {
+    file: File | null;
+  }
 
-    function onDocumentLoadSuccess({ numPages }) {
+const PDFViewer = ({file}: Props) => {
+    const [numPages, setNumPages] = useState<number | null>(null);
+    const [pageNumber, setPageNumber] = useState<number>(1);
+
+    function onDocumentLoadSuccess(numPages: PDFDocumentProxy) {
         setNumPages(numPages);
         setPageNumber(1);
     }
 
-    function changePage(offset) {
+    function changePage(offset: number) {
         setPageNumber(prevPageNumber => prevPageNumber + offset);
     }
 
@@ -45,7 +50,7 @@ const PDFViewer = ({ file }) => {
             </button>
             <button
             type="button"
-            disabled={pageNumber >= numPages}
+            disabled={numPages == null || pageNumber >= numPages}
             onClick={nextPage}
             >
             Next
