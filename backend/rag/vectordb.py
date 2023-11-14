@@ -20,20 +20,27 @@ if INDEX_NAME not in pinecone.list_indexes():
 
 index = pinecone.Index(INDEX_NAME)
 
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+
 def add_document_to_db(document_id: str, paragraphs: list[str], embeddings: list[str]):
     try:
-        index.upsert(
-            vectors=[
-                (
-                f"{document_id}_{i}", # Id of vector
-                embedding ,  # Dense vector values
-                {"document_id": document_id, "sentence_id": i, "text": paragraph} 
-                # For ease of architecture I will save the text in pinecone as well
-                # This is not recommended since Pinecone memory might be expensive
-                )
-                for i, (paragraph, embedding) in enumerate(zip(paragraphs, embeddings)) 
-            ]
-        )
+        embeddings = [
+            (
+            f"{document_id}_{i}", # Id of vector
+            embedding ,  # Dense vector values
+            {"document_id": document_id, "sentence_id": i, "text": paragraph} 
+            # For ease of architecture I will save the text in pinecone as well
+            # This is not recommended since Pinecone memory might be expensive
+            )
+            for i, (paragraph, embedding) in enumerate(zip(paragraphs, embeddings)) 
+        ]
+        for embedding_chunk in chunks(embeddings, 100):
+            index.upsert(
+                vectors=embedding_chunk
+            )
     except Exception as e:
         raise HTTPException(404, detail= f'Pinecone indexing fetch fail with error {e}')
     

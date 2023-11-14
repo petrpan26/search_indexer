@@ -6,3 +6,5 @@ pinecone-client
 python-docx 
 nltk
 python-multipart
+python-dotenv
+fastapi-cache2
