@@ -21,7 +21,8 @@ const DocumentUploader: React.FC = () => {
     headers: {
       "Content-type": "application/json",
     },
-  })
+  });
+  console.log(SERVER_URL);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [newQuestion, setNewQuestion] = useState<string>('');
   const [answer, setNewAnswer] = useState<string>('');
