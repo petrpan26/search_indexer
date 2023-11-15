@@ -12,10 +12,9 @@ const PDFViewer = ({file}: Props) => {
     const [numPages, setNumPages] = useState<number | null>(null);
     const [pageNumber, setPageNumber] = useState<number>(1);
 
-    function onDocumentLoadSuccess(numPages: PDFDocumentProxy) {
+    const onDocumentLoadSuccess = ({ numPages }) => {
         setNumPages(numPages);
-        setPageNumber(1);
-    }
+      }
 
     function changePage(offset: number) {
         setPageNumber(prevPageNumber => prevPageNumber + offset);
