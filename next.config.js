@@ -2,17 +2,7 @@
 var webpack = require('webpack');
 
 const nextConfig = {
-    rewrites: async () => {
-        return [
-            {
-                source: "/api/:path*",
-                destination:
-                    process.env.NODE_ENV === "development"
-                        ? "http://127.0.0.1:8000/api/:path*"
-                        : "/api/",
-            }
-        ];
-    },
+    output: 'export',
     webpack: (config) => {
         config.experiments = {
             ...config.experiments,
