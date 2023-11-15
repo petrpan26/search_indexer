@@ -24,6 +24,10 @@ const nextConfig = {
             })
         )
         return config
+    },
+    env: {
+        // declare here all your variables
+        SERVER_URL: process.env.SERVER_URL,
     }
 }
 

@@ -13,7 +13,7 @@ import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import PDFViewer from './PDFViewer'; // Import the PDFViewer component
 import axios from 'axios';
 
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+const SERVER_URL = process.env.SERVER_URL;
 
 const DocumentUploader: React.FC = () => {
   const http = axios.create({
