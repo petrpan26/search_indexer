@@ -93,7 +93,7 @@ const DocumentUploader: React.FC = () => {
     <Container maxWidth="sm" style={containerStyle}>
       <Paper elevation={3} style={paperStyle}>
         <Typography variant="h4" gutterBottom style={titleStyle}>
-          Document Question and Answering
+          Your Personal Book Reading Bot
         </Typography>
         <Box {...getRootProps()} style={dropzoneStyle}>
           <input {...getInputProps()} />
