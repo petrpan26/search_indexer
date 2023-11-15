@@ -99,7 +99,12 @@ const DocumentUploader: React.FC = () => {
           <input {...getInputProps()} />
           <CloudUploadIcon style={uploadIconStyle} />
           <Typography variant="h6" style={uploadText}>
-            Drag & Drop or Click to Upload a Document (PDF)
+            Drag & Drop or Click to Upload a Document (PDF) 
+            <br></br>
+
+            <Typography variant="h6" color={"red"}>
+              Please dont include personal document as it will be saved as raw text in the DB
+            </Typography>
           </Typography>
           {uploadedFile && <p>Uploaded: {uploadedFile.name}</p>}
         </Box>
