@@ -7,7 +7,7 @@
     "next-dev": "next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start -H 0.0.0.0 -p $PORT",
     "lint": "next lint"
   },
   "dependencies": {
