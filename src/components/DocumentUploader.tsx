@@ -22,6 +22,7 @@ const DocumentUploader: React.FC = () => {
       "Content-type": "application/json",
     },
   });
+  http.get('/');
   console.log(SERVER_URL);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [newQuestion, setNewQuestion] = useState<string>('What is the relationship between Harry Potter and Malfoy ?');
