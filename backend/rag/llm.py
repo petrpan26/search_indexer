@@ -1,16 +1,22 @@
+# backend/rag/llm.py
 from openai import OpenAI
 from fastapi import HTTPException
-import openai
+import cohere
+import os
 
-OPEN_AI_EMBEDDING_MODEL = 'text-embedding-ada-002'
 client = OpenAI()
+co = cohere.Client(api_key=os.environ.get('COHERE_API_KEY'))
 
-def fetch_embeddings(texts: list[str]) -> list[list[float]]:
+COHERE_EMBEDDING_MODEL = 'embed-english-v3.0'
+
+def fetch_embeddings(texts: list[str], embedding_type: str = 'search_document') -> list[list[float]]:
     try:
-        results =  client.embeddings.create(input = texts, model=OPEN_AI_EMBEDDING_MODEL).data
-        embeddings = [result.embedding 
-                    for result in results]
-        return embeddings
+        results =  co.embed(
+            texts=texts,
+            model=COHERE_EMBEDDING_MODEL,
+            input_type=embedding_type
+        ).embeddings
+        return results
     except Exception as e:
         print(e)
         raise HTTPException(404, detail= f'OpenAI embedding fetch fail with error {e}')

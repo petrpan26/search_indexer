@@ -30,7 +30,7 @@ const DocumentUploader: React.FC = () => {
   Malfoy is portrayed as a mean and arrogant character who looks down on Harry and his friends. 
   He tries to belittle Harry by making fun of his family and offering to help him avoid making friends with the "wrong sort."
    Harry, on the other hand, is not intimidated by Malfoy and stands up to him. They have a confrontation and agree to have a wizard's duel later on.`);
-  const [currentDocId, setDocId] = useState<string>("fd4e565a-7c66-4abf-8c97-6252b303893d");
+  const [currentDocId, setDocId] = useState<string>("b42c17a9-1370-494c-a3b5-b6410b14e63a");
   const [error, setError] = useState<string>('');
 
   const onDrop: DropzoneOptions['onDrop'] = (acceptedFiles, fileRejections) => {

@@ -8,3 +8,4 @@ nltk
 python-multipart
 python-dotenv
 fastapi-cache2
+cohere

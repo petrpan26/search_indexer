@@ -1,3 +1,4 @@
+# backend/rag/vectordb.py
 import pinecone
 from pinecone.core.client.configuration import Configuration as OpenApiConfiguration
 from fastapi import HTTPException
@@ -16,7 +17,8 @@ pinecone.init(
 
 
 if INDEX_NAME not in pinecone.list_indexes():
-    pinecone.create_index(INDEX_NAME, dimension=1536, metadata_config={"indexed": ["document_id"]})
+    pinecone.create_index(INDEX_NAME, dimension=1024
+                          , metadata_config={"indexed": ["document_id"]})
 
 index = pinecone.Index(INDEX_NAME)
 

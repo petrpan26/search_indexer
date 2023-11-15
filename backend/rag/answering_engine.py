@@ -1,7 +1,7 @@
+# backend/rag/answering_engine.py
 from nltk.tokenize import sent_tokenize
 from .file_helper import read_document_from_file
 import uuid
-from pinecone import Index
 from .llm import fetch_embeddings, synthesize_answer
 from .vectordb import add_document_to_db, fetch_top_paragraphs
 from fastapi import HTTPException
@@ -29,14 +29,14 @@ def add_document(filepath: str) -> str:
     paragraphs = split_document_to_paragraphs(document_text)
     if len(paragraphs) == 0:
         raise HTTPException('404', detail='No text was extracted from the document')
-    embeddings = fetch_embeddings(paragraphs)
+    embeddings = fetch_embeddings(paragraphs, embedding_type='search_document')
     document_id = str(uuid.uuid4())
     add_document_to_db(document_id, paragraphs, embeddings)
     print(document_id)
     return document_id
 
 def get_answer(question: str, document_id: str):
-    embedding = fetch_embeddings([question])[0]
+    embedding = fetch_embeddings([question], embedding_type='search_query')[0]
     relevant_paragraphs = fetch_top_paragraphs(document_id, embedding)
     if len(relevant_paragraphs) == 0:
         raise HTTPException(404, detail='Embedding are not ready yet for this document')
