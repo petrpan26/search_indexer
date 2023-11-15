@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -22,7 +22,11 @@ const DocumentUploader: React.FC = () => {
       "Content-type": "application/json",
     },
   });
-  http.get('/');
+  useEffect(() => {
+    // call api or anything
+    http.get('/');
+ });
+
   console.log(SERVER_URL);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [newQuestion, setNewQuestion] = useState<string>('What is the relationship between Harry Potter and Malfoy ?');
