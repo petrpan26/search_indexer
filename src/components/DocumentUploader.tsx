@@ -25,7 +25,7 @@ const DocumentUploader: React.FC = () => {
   useEffect(() => {
     // call api or anything
     http.get('/');
- });
+ }, []);
 
   console.log(SERVER_URL);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
