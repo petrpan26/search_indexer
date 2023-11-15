@@ -5,7 +5,7 @@ import type { PDFDocumentProxy } from 'pdfjs-dist';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 interface Props {
-    file: File | null;
+    file: File |  null;
   }
 
 const PDFViewer = ({file}: Props) => {
@@ -31,7 +31,7 @@ const PDFViewer = ({file}: Props) => {
     return (
         <>
         <Document
-            file={file}
+            file={file || "/harrypotter.pdf"}
             onLoadSuccess={onDocumentLoadSuccess}
         >
             <Page pageNumber={pageNumber} renderTextLayer={false} renderForms={false} renderAnnotationLayer={false}/>

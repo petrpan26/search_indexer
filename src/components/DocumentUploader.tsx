@@ -24,9 +24,12 @@ const DocumentUploader: React.FC = () => {
   });
   console.log(SERVER_URL);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [newQuestion, setNewQuestion] = useState<string>('');
-  const [answer, setNewAnswer] = useState<string>('');
-  const [currentDocId, setDocId] = useState<string>('');
+  const [newQuestion, setNewQuestion] = useState<string>('What is the relationship between Harry Potter and Malfoy ?');
+  const [answer, setNewAnswer] = useState<string>(`Harry Potter and Malfoy have a hostile relationship. 
+  Malfoy is portrayed as a mean and arrogant character who looks down on Harry and his friends. 
+  He tries to belittle Harry by making fun of his family and offering to help him avoid making friends with the "wrong sort."
+   Harry, on the other hand, is not intimidated by Malfoy and stands up to him. They have a confrontation and agree to have a wizard's duel later on.`);
+  const [currentDocId, setDocId] = useState<string>("fd4e565a-7c66-4abf-8c97-6252b303893d");
   const [error, setError] = useState<string>('');
 
   const onDrop: DropzoneOptions['onDrop'] = (acceptedFiles, fileRejections) => {
@@ -101,7 +104,7 @@ const DocumentUploader: React.FC = () => {
         </Box>
       </Paper>
       {/* Display the PDFViewer component */}
-      <PDFViewer file={uploadedFile} />
+      <PDFViewer file={uploadedFile}   />
       <Paper elevation={3} style={paperStyle}>
         <TextField
           fullWidth
