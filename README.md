@@ -2,6 +2,8 @@
 # Question and Answering Demo with Next.js and Python
 This is a demo application that demonstrates a Question and Answering (Q&A) system using Next.js for the frontend and Python with FastAPI for the backend. This README provides instructions on how to set up and run the application.
 
+Blog: https://medium.com/p/21823684dfb2
+
 ## Prerequisites
 Before you can run the demo, make sure you have the following software installed on your system:
 
